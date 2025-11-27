@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import axios from 'axios';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showForgotModal, setShowForgotModal] = useState(false);
+    const [forgotType, setForgotType] = useState('password'); // 'password' or 'username'
+    const [forgotEmail, setForgotEmail] = useState('');
+    const [forgotSuccess, setForgotSuccess] = useState('');
     
     const { login } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     
-    const from = location.state?.from || '/';
+    const from = location.state?.from || '/dashboard';
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,49 +34,131 @@ const Login = () => {
         }
     };
     
+    const handleForgot = async (e) => {
+        e.preventDefault();
+        setError('');
+        setForgotSuccess('');
+        
+        try {
+            const endpoint = forgotType === 'password' 
+                ? 'forgot-password' 
+                : 'forgot-username';
+            
+            await axios.post(`http://127.0.0.1:8000/api/users/${endpoint}/`, {
+                email: forgotEmail
+            });
+            
+            setForgotSuccess(`Check your email! We've sent you ${forgotType === 'password' ? 'a reset link' : 'your username'}.`);
+            setForgotEmail('');
+        } catch (err) {
+            setError('Failed to send email. Please try again.');
+        }
+    };
+    
     return (
         <section className="auth-page">
             <div className="container">
                 <div className="auth-box">
-                    <h1>Sign In</h1>
-                    <p className="subtitle">Welcome back to Omniplex</p>
+                    <div className="auth-header">
+                        <div className="auth-icon">🎬</div>
+                        <h1>Welcome Back</h1>
+                        <p className="subtitle">Sign in to continue your cinema experience</p>
+                    </div>
                     
                     {error && <div className="alert alert-error">{error}</div>}
                     
                     <form onSubmit={handleSubmit} className="auth-form">
                         <div className="form-group">
-                            <label htmlFor="username">Email or Username</label>
+                            <label htmlFor="username">
+                                <span className="label-icon">👤</span>
+                                Username or Email
+                            </label>
                             <input 
                                 type="text" 
                                 id="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 required 
+                                autoFocus
+                                placeholder="Enter your username or email"
                             />
                         </div>
                         
                         <div className="form-group">
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">
+                                <span className="label-icon">🔒</span>
+                                Password
+                            </label>
                             <input 
                                 type="password" 
                                 id="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                required 
+                                required
+                                placeholder="Enter your password"
                             />
                         </div>
                         
-                        <button type="submit" className="btn-primary" disabled={loading}>
-                            {loading ? 'Signing In...' : 'Sign In'}
+                        <button type="submit" className="btn-primary btn-auth" disabled={loading}>
+                            {loading ? (
+                                <><span className="spinner"></span> Signing in...</>
+                            ) : (
+                                <>Sign In →</>
+                            )}
                         </button>
                     </form>
                     
                     <div className="auth-footer">
-                        <p><Link to="/forgot-password">Forgot password?</Link></p>
-                        <p>Don't have an account? <Link to="/register">Join MyOmni</Link></p>
+                        <div className="forgot-links">
+                            <button 
+                                onClick={() => { setShowForgotModal(true); setForgotType('password'); }}
+                                className="link-button"
+                            >
+                                Forgot password?
+                            </button>
+                            <span className="separator">•</span>
+                            <button 
+                                onClick={() => { setShowForgotModal(true); setForgotType('username'); }}
+                                className="link-button"
+                            >
+                                Forgot username?
+                            </button>
+                        </div>
+                        <p className="signup-prompt">
+                            Don't have an account? <Link to="/register">Join MyOmni</Link>
+                        </p>
                     </div>
                 </div>
             </div>
+            
+            {/* Forgot Modal */}
+            {showForgotModal && (
+                <div className="modal-overlay" onClick={() => setShowForgotModal(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={() => setShowForgotModal(false)}>×</button>
+                        <h2>Forgot {forgotType === 'password' ? 'Password' : 'Username'}?</h2>
+                        <p>Enter your email and we'll send you {forgotType === 'password' ? 'a reset link' : 'your username'}.</p>
+                        
+                        {forgotSuccess && <div className="alert alert-success">{forgotSuccess}</div>}
+                        {error && <div className="alert alert-error">{error}</div>}
+                        
+                        <form onSubmit={handleForgot}>
+                            <div className="form-group">
+                                <input 
+                                    type="email"
+                                    value={forgotEmail}
+                                    onChange={(e) => setForgotEmail(e.target.value)}
+                                    placeholder="Enter your email"
+                                    required
+                                />
+                            </div>
+                            <button type="submit" className="btn-primary">
+                                Send {forgotType === 'password' ? 'Reset Link' : 'Username'}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

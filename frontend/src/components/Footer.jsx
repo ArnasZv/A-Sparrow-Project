@@ -59,7 +59,7 @@ const Footer = () => {
                 </div>
                 
                 <div className="footer-bottom">
-                    <p>&copy; 2024 Omniplex Cinema. All rights reserved. Made with ❤️ for movie lovers.</p>
+                    <p>&copy; 2025 OmniWatch Cinema. All rights reserved. Made with ❤️ for movie lovers.</p>
                 </div>
             </div>
         </footer>

@@ -87,21 +87,8 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            
-            <section className="movies-section">
-                <div className="container">
-                    <h2>Coming Soon</h2>
-                    <div className="movie-grid">
-                        {comingSoon.length === 0 ? (
-                            <p>No upcoming movies.</p>
-                        ) : (
-                            comingSoon.map(movie => (
-                                <MovieCard key={movie.id} movie={movie} />
-                            ))
-                        )}
-                    </div>
-                </div>
-            </section>
+             
+             <div className="section-divider"></div>
             
             <section className="omnipass-promo">
                 <div className="container">

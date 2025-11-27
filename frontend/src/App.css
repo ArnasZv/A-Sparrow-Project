@@ -90,6 +90,37 @@ body {
     border: none;
 }
 
+/* Hamburger for Phones and Tablets*/
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media (max-width: 825px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--secondary-color);
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+}
+
 /* Modern Footer */
 .main-footer {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
@@ -100,21 +131,7 @@ body {
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
 }
 
-.main-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--primary-color) 20%, 
-        #ff6b6b 40%, 
-        var(--primary-color) 60%, 
-        transparent 100%);
-    animation: shimmer 3s infinite;
-}
+
 
 @keyframes shimmer {
     0% {
@@ -426,24 +443,61 @@ body {
 /* Hero Section */
 .hero {
     height: 60vh;
-    background: linear-gradient(135deg, 
-        rgba(229, 9, 20, 0.1) 0%, 
-        rgba(0, 0, 0, 0.9) 50%, 
-        rgba(20, 20, 20, 1) 100%);
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+        url('/public/hero-cinema.jpeg') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated overlay effect */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-content h1 {
     font-size: 56px;
     margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .hero-content p {
     font-size: 24px;
     margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Cinema Selector */
@@ -535,6 +589,37 @@ body {
     font-size: 14px;
     color: #999;
 }
+
+.promo-content {
+    text-align: center;
+}
+
+.section-divider {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #e50914, #ff6b6b, #e50914, transparent);
+    margin: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    to {
+        left: 100%;
+    }
+}
+
 
 /* Quick Actions */
 .quick-actions {
@@ -784,7 +869,16 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     position: relative;
+    text-decoration: none;
+
+  
 }
+
+.movie-card a {
+    text-decoration: none;
+}
+
+
 
 .movie-card:hover {
     transform: translateY(-10px);
@@ -842,6 +936,7 @@ body {
 .movie-info {
     padding: 20px;
     background: var(--card-bg);
+    text-decoration: none;    
 }
 
 .movie-info h3 {
@@ -857,6 +952,7 @@ body {
     line-height: 1.4;
     min-height: 50px;
     letter-spacing: 0.3px;
+    text-decoration: none;
 }
 
 .movie-meta {
@@ -1300,4 +1396,792 @@ body {
         flex: 1;
         min-width: 100px;
     }
+}
+
+/* Modern Auth Pages */
+.auth-page {
+    min-height: 100vh;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+        url('/public/popcorn.jpg') center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-page::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(229, 9, 20, 0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.auth-box {
+    max-width: 500px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(20, 20, 20, 0.95));
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(229, 9, 20, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease;
+}
+
+.register-box {
+    max-width: 600px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.auth-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.auth-header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--primary-color), #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: #999;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+/* Form Styles */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.register-form {
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.label-icon {
+    font-size: 18px;
+}
+
+.form-group input {
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 2px solid #333;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-color);
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.2);
+    transform: translateY(-2px);
+}
+
+.form-group input::placeholder {
+    color: #666;
+}
+
+/* Password Input */
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper input {
+    padding-right: 50px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.password-toggle:hover {
+    opacity: 1;
+}
+
+/* Password Strength */
+.password-strength {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: -5px;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.strength-label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Checkbox */
+.checkbox-group {
+    margin: 10px 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: normal !important;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-top: 3px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-text {
+    color: #b0b0b0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.checkbox-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.checkbox-text a:hover {
+    text-decoration: underline;
+}
+
+/* Error Text */
+.error-text {
+    color: var(--primary-color);
+    font-size: 13px;
+    margin-top: -5px;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background: rgba(40, 167, 69, 0.2);
+    border: 1px solid rgba(40, 167, 69, 0.5);
+    color: #28a745;
+}
+
+.alert-error {
+    background: rgba(229, 9, 20, 0.2);
+    border: 1px solid rgba(229, 9, 20, 0.5);
+    color: #ff6b6b;
+}
+
+/* Auth Button */
+.btn-auth {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-auth .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Auth Footer */
+.auth-footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.forgot-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.link-button:hover {
+    text-decoration: underline;
+    color: #ff6b6b;
+}
+
+.separator {
+    color: #666;
+}
+
+.signup-prompt {
+    color: #999;
+    font-size: 15px;
+}
+
+.signup-prompt a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.signup-prompt a:hover {
+    color: #ff6b6b;
+    text-decoration: underline;
+}
+
+/* Success Box */
+.success-box {
+    text-align: center;
+}
+
+.success-animation {
+    margin-bottom: 30px;
+}
+
+.checkmark {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--primary-color), #ff6b6b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: white;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.email-notice {
+    color: #999;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.loading-redirect {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loading-redirect .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(229, 9, 20, 0.2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-redirect p {
+    color: #999;
+    font-size: 14px;
+}
+
+/* Modal for Forgot Password/Username */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a1a, #141414);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(229, 9, 20, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.modal-content p {
+    color: #999;
+    margin-bottom: 25px;
+}
+
+/* Responsive */
+/* Tablets and smaller (below 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .hero-content h1 {
+        font-size: 42px;
+    }
+    
+    .hero-content p {
+        font-size: 20px;
+    }
+}
+
+/* Mobile Landscape and Tablets (below 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* Header */
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 0;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 28px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        height: 50vh;
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+    
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+    }
+    
+    /* Cinema Selector */
+    .selector-box {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .selector-box select {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Movie Grid */
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+    }
+    
+    .movie-card {
+        max-width: 100%;
+    }
+    
+    .movie-poster {
+        height: 240px;
+    }
+    
+    .movie-info h3 {
+        font-size: 16px;
+        min-height: 45px;
+    }
+    
+    .movie-info {
+        padding: 15px;
+    }
+    
+    .btn-book {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    /* Sections */
+    .movies-section {
+        padding: 40px 0;
+    }
+    
+    .movies-section h2 {
+        font-size: 28px;
+    }
+    
+    /* OmniPass Promo */
+    .omnipass-promo {
+        padding: 60px 20px;
+    }
+    
+    .promo-content h2 {
+        font-size: 32px;
+    }
+    
+    .promo-content p {
+        font-size: 18px;
+    }
+    
+    .benefits-list {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+    
+    /* Stats Grid (Dashboard) */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-icon {
+        font-size: 36px;
+    }
+    
+    .stat-info h3 {
+        font-size: 28px;
+    }
+    
+    /* Booking Card */
+    .booking-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .booking-actions {
+        align-items: flex-start;
+    }
+    
+    .action-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .action-buttons button,
+    .action-buttons a {
+        width: 100%;
+    }
+}
+
+/* Mobile Portrait (below 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Hero */
+    .hero {
+        height: 40vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 24px;
+    }
+    
+    .hero-content p {
+        font-size: 14px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    /* Movie Grid - Single Column on Very Small Screens */
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .movie-poster {
+        height: 200px;
+    }
+    
+    .movie-info h3 {
+        font-size: 14px;
+        min-height: 40px;
+    }
+    
+    .movie-meta {
+        font-size: 11px;
+        gap: 8px;
+    }
+    
+    .btn-book {
+        padding: 10px;
+        font-size: 13px;
+    }
+    
+    /* Sections */
+    .movies-section h2 {
+        font-size: 24px;
+    }
+    
+    /* OmniPass */
+    .omnipass-promo {
+        padding: 40px 15px;
+    }
+    
+    .promo-content h2 {
+        font-size: 26px;
+    }
+    
+    .promo-content p {
+        font-size: 16px;
+    }
+    
+    .benefits-list li {
+        font-size: 14px;
+    }
+    
+    /*Stack in Single Column */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Actions Grid */
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Tabs */
+    .tabs {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .tab {
+        width: 100%;
+    }
+    
+    /* Back to Top */
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* Extra Small Screens (below 375px) */
+@media (max-width: 375px) {
+    .hero-content h1 {
+        font-size: 20px;
+    }
+    
+    .movie-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .movie-poster {
+        height: 300px;
+    }
+    
+    .logo h1 {
+        font-size: 24px;
+    }
+}
+
+/*containers shifting left */
+.App {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.home,
+.movies-section,
+.cinema-selector,
+.omnipass-promo {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* images don't break layout */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevent text overflow */
+* {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
