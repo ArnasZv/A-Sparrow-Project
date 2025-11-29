@@ -9,9 +9,13 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from decouple import config
 from pathlib import Path
+from dotenv import load_dotenv
+import dj_database_url
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +29,9 @@ SECRET_KEY = 'django-insecure-=t)5@guz!m0u#5v*#94b^%)je+k#=)pdr#ga2i!=@@zq^s_l+q
 STRIPE_SECRET_KEY = 'pk_test_51SWmU22MSNu1lWenk7tfZX7GbFzQigJodkNEq6bjf6caG2tkVVnIcMv45B76MDQz4G219w0ew0eJrRnAjyVvYTWE00d0Xi65uq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 # Application definition
