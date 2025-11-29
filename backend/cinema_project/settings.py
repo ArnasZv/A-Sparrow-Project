@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-=t)5@guz!m0u#5v*#94b^%)je+k#=)pdr#ga2i!=@@zq^s_l+q'
+STRIPE_SECRET_KEY = 'pk_test_51SWmU22MSNu1lWenk7tfZX7GbFzQigJodkNEq6bjf6caG2tkVVnIcMv45B76MDQz4G219w0ew0eJrRnAjyVvYTWE00d0Xi65uq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,10 +140,10 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 20,
+    'PAGE_SIZE': 10,
 }
 
 # JWT Settings
@@ -165,9 +166,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # For Gmail
+EMAIL_HOST = 'smtp.gmail.com' 
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+# Change these to your own email to see how it functions
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='arnasjsparrow@gmail.com')  
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='nlvq noug qzuz jdxi')  
-DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER', default='noreply@omniplex.com')
+DEFAULT_FROM_EMAIL = 'Omniwatch Cinema <noreply@omniwatch.com>'

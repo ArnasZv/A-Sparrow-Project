@@ -34,15 +34,7 @@ class MovieViewSet(viewsets.ReadOnlyModelViewSet):
         serializer = self.get_serializer(movies, many=True)
         return Response(serializer.data)
     
-    @action(detail=False, methods=['get'])
-    def coming_soon(self, request):
-        """Get upcoming movies"""
-        movies = Movie.objects.filter(
-            release_date__gt=date.today()
-        ).order_by('release_date')
-        
-        serializer = self.get_serializer(movies, many=True)
-        return Response(serializer.data)
+   
     
     @action(detail=True, methods=['get'])
     def showtimes(self, request, pk=None):

@@ -22,57 +22,107 @@ const Dashboard = () => {
     }, []);
     
     const loadDashboardData = async () => {
+    try {
+        const bookingsResponse = await bookingsAPI.getMyBookings();
+        const bookingsData = bookingsResponse.data.results || bookingsResponse.data;
+        
+        //Ensure it's an array
+        const validBookings = Array.isArray(bookingsData) ? bookingsData : [];
+        
+        setBookings(validBookings);
+        calculateStats(validBookings);
+        
+        //Handle recommended movies safely
         try {
-            const bookingsResponse = await bookingsAPI.getMyBookings();
-            const bookingsData = bookingsResponse.data.results || bookingsResponse.data;
-            
-            setBookings(bookingsData);
-            calculateStats(bookingsData);
-            
             const moviesResponse = await moviesAPI.getNowShowing();
-            setRecommendedMovies(moviesResponse.data.slice(0, 4));
-            
-            setLoading(false);
-        } catch (error) {
-            console.error('Error loading dashboard:', error);
-            setLoading(false);
+            const moviesData = moviesResponse.data.results || moviesResponse.data;
+            setRecommendedMovies(Array.isArray(moviesData) ? moviesData.slice(0, 4) : []);
+        } catch (movieError) {
+            console.error('Error loading recommended movies:', movieError);
+            setRecommendedMovies([]);
         }
-    };
+        
+        setLoading(false);
+    } catch (error) {
+        console.error('Error loading dashboard:', error);
+        setBookings([]); 
+        setLoading(false);
+    }
+};
     
     const calculateStats = (bookingsData) => {
-        const now = new Date();
-        const upcoming = bookingsData.filter(b => 
-            isFuture(new Date(b.showtime.start_time)) && b.status === 'CONFIRMED'
-        );
-        const past = bookingsData.filter(b => 
-            isPast(new Date(b.showtime.start_time))
-        );
-        const totalSpent = bookingsData
-            .filter(b => b.status === 'CONFIRMED')
-            .reduce((sum, b) => sum + parseFloat(b.total_amount), 0);
-        
+    // ✅ Safety check
+    if (!Array.isArray(bookingsData) || bookingsData.length === 0) {
         setStats({
-            totalBookings: bookingsData.length,
-            upcomingBookings: upcoming.length,
-            pastBookings: past.length,
-            totalSpent: totalSpent
+            totalBookings: 0,
+            upcomingBookings: 0,
+            pastBookings: 0,
+            totalSpent: 0
         });
-    };
+        return;
+    }
     
-    const getFilteredBookings = () => {
-        const now = new Date();
+    const now = new Date();
+    const upcoming = bookingsData.filter(b => {
+        try {
+            return b.showtime?.start_time && 
+                   isFuture(new Date(b.showtime.start_time)) && 
+                   b.status === 'CONFIRMED';
+        } catch (e) {
+            return false;
+        }
+    });
+    
+    const past = bookingsData.filter(b => {
+        try {
+            return b.showtime?.start_time && 
+                   isPast(new Date(b.showtime.start_time));
+        } catch (e) {
+            return false;
+        }
+    });
+    
+    const totalSpent = bookingsData
+        .filter(b => b.status === 'CONFIRMED' && b.total_amount)
+        .reduce((sum, b) => sum + parseFloat(b.total_amount), 0);
+    
+    setStats({
+        totalBookings: bookingsData.length,
+        upcomingBookings: upcoming.length,
+        pastBookings: past.length,
+        totalSpent: totalSpent
+    });
+};
+
+const getFilteredBookings = () => {
+    // ✅ Safety check
+    if (!Array.isArray(bookings) || bookings.length === 0) {
+        return [];
+    }
+    
+    const now = new Date();
+    try {
         switch (activeTab) {
             case 'upcoming':
                 return bookings.filter(b => 
-                    isFuture(new Date(b.showtime.start_time)) && b.status === 'CONFIRMED'
+                    b.showtime?.start_time &&
+                    isFuture(new Date(b.showtime.start_time)) && 
+                    b.status === 'CONFIRMED'
                 );
             case 'past':
-                return bookings.filter(b => isPast(new Date(b.showtime.start_time)));
+                return bookings.filter(b => 
+                    b.showtime?.start_time &&
+                    isPast(new Date(b.showtime.start_time))
+                );
             case 'all':
             default:
                 return bookings;
         }
-    };
+    } catch (error) {
+        console.error('Error filtering bookings:', error);
+        return [];
+    }
+};
     
     const handleCancelBooking = async (bookingId) => {
         if (!window.confirm('Are you sure you want to cancel this booking?')) {

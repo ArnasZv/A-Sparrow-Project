@@ -39,7 +39,6 @@ const Header = () => {
                     {/* Navigation Menu */}
                     <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
                         <li><Link to="/" onClick={closeMenu}>Movies</Link></li>
-                        <li><Link to="/cinemas" onClick={closeMenu}>Cinemas</Link></li>
                         <li><Link to="/omnipass" onClick={closeMenu}>MyOmniPass</Link></li>
                         {user ? (
                             <>

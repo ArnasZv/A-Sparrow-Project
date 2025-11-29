@@ -9,7 +9,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [showForgotModal, setShowForgotModal] = useState(false);
-    const [forgotType, setForgotType] = useState('password'); // 'password' or 'username'
+    const [forgotType, setForgotType] = useState('password');
     const [forgotEmail, setForgotEmail] = useState('');
     const [forgotSuccess, setForgotSuccess] = useState('');
     

@@ -38,9 +38,11 @@ const MovieDetails = () => {
     const loadCinemas = async () => {
         try {
             const response = await cinemasAPI.getAll();
-            setCinemas(response.data);
+            // Ensure cinemas is always an array
+            setCinemas(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
             console.error('Error loading cinemas:', error);
+            setCinemas([]);
         }
     };
     
@@ -50,9 +52,11 @@ const MovieDetails = () => {
                 date: selectedDate,
                 cinema: selectedCinema
             });
-            setShowtimes(response.data);
+            // Ensure showtimes is always an array
+            setShowtimes(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
             console.error('Error loading showtimes:', error);
+            setShowtimes([]);
         }
     };
     
@@ -119,7 +123,7 @@ const MovieDetails = () => {
                         <div className="filter-group">
                             <label htmlFor="cinema-filter">Cinema:</label>
                             <select 
-                                id="cinema-filter"
+                                id="cinema-select"
                                 value={selectedCinema}
                                 onChange={(e) => setSelectedCinema(e.target.value)}
                             >

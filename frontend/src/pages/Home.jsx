@@ -4,7 +4,6 @@ import MovieCard from '../components/MovieCard';
 
 const Home = () => {
     const [nowShowing, setNowShowing] = useState([]);
-    const [comingSoon, setComingSoon] = useState([]);
     const [cinemas, setCinemas] = useState([]);
     const [selectedCinema, setSelectedCinema] = useState('');
     const [loading, setLoading] = useState(true);
@@ -15,20 +14,27 @@ const Home = () => {
     
     const loadData = async () => {
         try {
-            const [nowRes, comingRes, cinemasRes] = await Promise.all([
-                moviesAPI.getNowShowing(),
-                moviesAPI.getComingSoon(),
-                cinemasAPI.getAll(),
-            ]);
+            console.log('🎬 Loading movies and cinemas...');
             
-            setNowShowing(Array.isArray(nowRes.data) ? nowRes.data : []);
-            setComingSoon(Array.isArray(comingRes.data) ? comingRes.data : []);
-            setCinemas(Array.isArray(cinemasRes.data) ? cinemasRes.data : []);
+            // Fetch movies
+            const moviesRes = await moviesAPI.getNowShowing();
+            console.log('📦 Movies response:', moviesRes);
+            setNowShowing(Array.isArray(moviesRes.data.results) ? moviesRes.data.results : moviesRes.data);
+            
+            // Fetch cinemas
+            try {
+                const cinemasRes = await cinemasAPI.getAll();
+                console.log('📦 Cinemas response:', cinemasRes);
+                setCinemas(Array.isArray(cinemasRes.data.results) ? cinemasRes.data.results : cinemasRes.data);
+            } catch (cinemaError) {
+                console.log('⚠️ Cinemas not available:', cinemaError);
+                // Cinemas are optional - continue without them
+            }
+            
             setLoading(false);
         } catch (error) {
-            console.error('Error loading data:', error);
+            console.error('❌ Error loading data:', error);
             setNowShowing([]);
-            setComingSoon([]);
             setCinemas([]);
             setLoading(false);
         }
@@ -53,25 +59,27 @@ const Home = () => {
                 </div>
             </section>
             
-            <section className="cinema-selector">
-                <div className="container">
-                    <div className="selector-box">
-                        <label htmlFor="cinema-select">Select Your Cinema:</label>
-                        <select 
-                            id="cinema-select"
-                            value={selectedCinema}
-                            onChange={(e) => setSelectedCinema(e.target.value)}
-                        >
-                            <option value="">All Locations</option>
-                            {cinemas.map(cinema => (
-                                <option key={cinema.id} value={cinema.id}>
-                                    {cinema.name} - {cinema.location}
-                                </option>
-                            ))}
-                        </select>
+            {cinemas.length > 0 && (
+                <section className="cinema-selector">
+                    <div className="container">
+                        <div className="selector-box">
+                            <label htmlFor="cinema-select">Select Your Cinema:</label>
+                            <select 
+                                id="cinema-select"
+                                value={selectedCinema}
+                                onChange={(e) => setSelectedCinema(e.target.value)}
+                            >
+                                <option value="">All Locations</option>
+                                {cinemas.map(cinema => (
+                                    <option key={cinema.id} value={cinema.id}>
+                                        {cinema.name} - {cinema.location}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
             
             <section className="movies-section" id="now-showing">
                 <div className="container">
@@ -88,7 +96,7 @@ const Home = () => {
                 </div>
             </section>
              
-             <div className="section-divider"></div>
+            <div className="section-divider"></div>
             
             <section className="omnipass-promo">
                 <div className="container">

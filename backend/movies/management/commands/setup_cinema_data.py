@@ -29,11 +29,11 @@ class Command(BaseCommand):
         
         # Cinema data for Ireland
         cinema_data = [
-            {'name': 'Omniplex', 'location': 'Dublin - Rathmines', 'address': 'Rathmines Road, Dublin 6', 'is_maxx': True},
-            {'name': 'Omniplex', 'location': 'Galway - Salthill', 'address': 'Salthill, Galway', 'is_dluxx': True},
-            {'name': 'Omniplex', 'location': 'Cork', 'address': 'Merchant\'s Quay, Cork', 'is_maxx': True},
-            {'name': 'Omniplex', 'location': 'Limerick', 'address': 'Cruises Street, Limerick', 'is_maxx': False},
-            {'name': 'Omniplex', 'location': 'Sligo', 'address': 'Wine Street, Sligo', 'is_maxx': True},
+            {'name': 'OmniWatch', 'location': 'Dublin - Rathmines', 'address': 'Rathmines Road, Dublin 6', 'is_maxx': True},
+            {'name': 'OmniWatch', 'location': 'Galway - Salthill', 'address': 'Salthill, Galway', 'is_dluxx': True},
+            {'name': 'OmniWatch', 'location': 'Cork - Mahon Shopping Center', 'address': 'Merchant\'s Quay, Cork', 'is_maxx': True},
+            {'name': 'OmniWatch', 'location': 'Limerick - Crescent Shopping Center', 'address': 'Cruises Street, Limerick', 'is_maxx': True},
+            {'name': 'OmniWatch', 'location': 'Sligo - Rathedmond', 'address': 'Wine Street, Sligo', 'is_maxx': True},
         ]
         
         cinemas_created = 0
@@ -61,16 +61,30 @@ class Command(BaseCommand):
             else:
                 self.stdout.write(f'Cinema already exists: {cinema.name} - {cinema.location}')
             
-            # Create screens for this cinema
+            # Create 12 screens for this cinema
             screen_configs = [
-                {'name': 'Screen 1', 'type': 'MAXX', 'rows': 12, 'seats_per_row': 16},
-                {'name': 'Screen 2', 'type': 'STANDARD', 'rows': 10, 'seats_per_row': 14},
+                # Premium Screens (1-4)
+                {'name': 'Screen 1', 'type': 'MAXX', 'rows': 15, 'seats_per_row': 20},
+                {'name': 'Screen 2', 'type': 'MAXX', 'rows': 14, 'seats_per_row': 18},
                 {'name': 'Screen 3', 'type': 'DLUXX', 'rows': 8, 'seats_per_row': 12},
-                {'name': 'Screen 4', 'type': 'RECLINE', 'rows': 6, 'seats_per_row': 10},
-                {'name': 'Screen 5', 'type': 'STANDARD', 'rows': 10, 'seats_per_row': 15},
+                {'name': 'Screen 4', 'type': 'RECLINE', 'rows': 10, 'seats_per_row': 14},
+                
+                # Standard Large Screens (5-8)
+                {'name': 'Screen 5', 'type': 'STANDARD', 'rows': 12, 'seats_per_row': 16},
+                {'name': 'Screen 6', 'type': 'STANDARD', 'rows': 12, 'seats_per_row': 16},
+                {'name': 'Screen 7', 'type': 'STANDARD', 'rows': 11, 'seats_per_row': 15},
+                {'name': 'Screen 8', 'type': 'STANDARD', 'rows': 11, 'seats_per_row': 15},
+                
+                # Medium Screens (9-10)
+                {'name': 'Screen 9', 'type': 'STANDARD', 'rows': 10, 'seats_per_row': 14},
+                {'name': 'Screen 10', 'type': 'STANDARD', 'rows': 10, 'seats_per_row': 14},
+                
+                # Small Screens (11-12)
+                {'name': 'Screen 11', 'type': 'STANDARD', 'rows': 8, 'seats_per_row': 12},
+                {'name': 'Screen 12', 'type': 'STANDARD', 'rows': 8, 'seats_per_row': 12},
             ]
             
-            for screen_info in screen_configs[:3]:  # Create 3 screens per cinema
+            for screen_info in screen_configs:
                 screen, screen_created = Screen.objects.get_or_create(
                     cinema=cinema,
                     name=screen_info['name'],
@@ -158,50 +172,57 @@ class Command(BaseCommand):
         }
         
         # Showtime slots (hours)
-        time_slots = [11, 14, 17, 20, 21, 22]
+        time_slots = [11, 12, 14, 15, 17, 18, 20, 21, 22]
         
         for day in range(num_days):
             show_date = timezone.now() + timedelta(days=day)
             
-            # Select random movies for this day (3-5 movies per screen)
+           
             for screen in screens:
-                daily_movies = random.sample(list(movies), min(4, movies.count()))
+                # Premium screens get more showtimes 
+                if screen.screen_type in ['MAXX', 'DLUXX', 'RECLINE']:
+                    num_showtimes = random.randint(5, 7)
+                else:
+                    # Standard screens 
+                    num_showtimes = random.randint(3, 5)
                 
-                for movie in daily_movies:
-                    # Random time slots for this movie (1-2 showtimes per day)
-                    movie_slots = random.sample(time_slots, random.randint(1, 2))
+                # Select random movies for this screen
+                daily_movies = random.sample(list(movies), min(num_showtimes, movies.count()))
+                
+                # Assign time slots to movies
+                selected_slots = random.sample(time_slots, min(num_showtimes, len(time_slots)))
+                
+                for movie, hour in zip(daily_movies, selected_slots):
+                    show_time = show_date.replace(
+                        hour=hour,
+                        minute=random.choice([0, 15, 30, 45]),
+                        second=0,
+                        microsecond=0
+                    )
                     
-                    for hour in movie_slots:
-                        show_time = show_date.replace(
-                            hour=hour,
-                            minute=random.choice([0, 15, 30, 45]),
-                            second=0,
-                            microsecond=0
-                        )
+                    # Check if showtime already exists
+                    if not Showtime.objects.filter(
+                        screen=screen,
+                        start_time=show_time
+                    ).exists():
                         
-                        # Check if showtime already exists
-                        if not Showtime.objects.filter(
+                        base_price = base_prices.get(screen.screen_type, 10.50)
+                        is_3d = movie.is_3d and random.choice([True, False])
+                        
+                        if is_3d:
+                            base_price += 2.00
+                        
+                        # Weekend surcharge
+                        if show_date.weekday() >= 5:  # Saturday or Sunday
+                            base_price += 2.50
+                        
+                        Showtime.objects.create(
+                            movie=movie,
                             screen=screen,
-                            start_time=show_time
-                        ).exists():
-                            
-                            base_price = base_prices.get(screen.screen_type, 10.50)
-                            is_3d = movie.is_3d and random.choice([True, False])
-                            
-                            if is_3d:
-                                base_price += 2.00
-                            
-                            # Weekend surcharge
-                            if show_date.weekday() >= 5:  # Saturday or Sunday
-                                base_price += 1.50
-                            
-                            Showtime.objects.create(
-                                movie=movie,
-                                screen=screen,
-                                start_time=show_time,
-                                base_price=base_price,
-                                is_3d=is_3d
-                            )
-                            showtimes_created += 1
+                            start_time=show_time,
+                            base_price=base_price,
+                            is_3d=is_3d
+                        )
+                        showtimes_created += 1
         
         return showtimes_created

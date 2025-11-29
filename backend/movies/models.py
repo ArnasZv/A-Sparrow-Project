@@ -31,7 +31,7 @@ class Movie(models.Model):
     rating = models.CharField(max_length=5, choices=RATING_CHOICES)
     genre = models.CharField(max_length=100)
     release_date = models.DateField()
-    poster_image = models.ImageField(upload_to='movie_posters/')
+    poster_image = models.ImageField(upload_to='movie_posters/', null=True, blank=True)
     banner_image = models.ImageField(upload_to='movie_banners/', null=True, blank=True)
     trailer_url = models.URLField(blank=True)
     director = models.CharField(max_length=200)

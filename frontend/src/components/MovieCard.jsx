@@ -6,7 +6,7 @@ const MovieCard = ({ movie }) => {
         <div className="movie-card">
             <Link to={`/movie/${movie.id}`}>
                 <div className="movie-poster">
-                    <img src={movie.poster_url} alt={movie.title} />
+                    <img src={movie.poster_image} alt={movie.title} />
                     {movie.is_3d && <span className="badge-3d">3D</span>}
                     {movie.is_imax && <span className="badge-imax">MAXX</span>}
                 </div>

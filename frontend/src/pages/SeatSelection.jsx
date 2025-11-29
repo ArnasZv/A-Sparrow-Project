@@ -59,7 +59,30 @@ const SeatSelection = () => {
                 seat_ids: seatIds
             });
             
-            navigate(`/booking/checkout/${response.data.id}`);
+            // Calculate pricing details
+            const subtotal = calculateTotal();
+            const bookingFee = 1.00;
+            const total = subtotal + bookingFee;
+            
+            // Prepare booking data to pass to Payment page
+            const bookingData = {
+                id: response.data.id,
+                movieTitle: showtime.movie.title,
+                moviePoster: showtime.movie.poster_url || '/placeholder.jpg',
+                cinema: `${showtime.screen.cinema.name} - ${showtime.screen.cinema.location}`,
+                dateTime: format(new Date(showtime.start_time), 'EEEE, MMMM d, yyyy - h:mm a'),
+                screen: showtime.screen.name,
+                seats: selectedSeats.map(seat => `${seat.row}${seat.number}`),
+                numSeats: selectedSeats.length,
+                subtotal: subtotal,
+                bookingFee: bookingFee,
+                discount: 0,
+                total: total,
+            };
+            
+            // Navigate to payment page with booking data
+            navigate('/payment', { state: { bookingData } });
+            
         } catch (error) {
             console.error('Booking error:', error);
             alert(error.response?.data?.error || 'Failed to create booking. Please try again.');

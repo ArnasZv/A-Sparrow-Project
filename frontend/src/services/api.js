@@ -55,24 +55,31 @@ api.interceptors.response.use(
 
 // API methods
 export const moviesAPI = {
+    
     getAll: (params) => api.get('/movies/movies/', { params }),
     getById: (id) => api.get(`/movies/movies/${id}/`),
-    getNowShowing: () => api.get('/movies/movies/now_showing/'),
-    getComingSoon: () => api.get('/movies/movies/coming_soon/'),
+    
+    
+    getNowShowing: () => api.get('/movies/movies/'),
+    
+    
     getShowtimes: (movieId, params) => api.get(`/movies/movies/${movieId}/showtimes/`, { params }),
 };
 
 export const cinemasAPI = {
+    
     getAll: () => api.get('/movies/cinemas/'),
     getById: (id) => api.get(`/movies/cinemas/${id}/`),
 };
 
 export const showtimesAPI = {
+    
     getById: (id) => api.get(`/movies/showtimes/${id}/`),
     getSeats: (id) => api.get(`/movies/showtimes/${id}/seats/`),
 };
 
 export const bookingsAPI = {
+    
     create: (data) => api.post('/bookings/bookings/', data),
     getMyBookings: () => api.get('/bookings/bookings/'),
     getById: (id) => api.get(`/bookings/bookings/${id}/`),

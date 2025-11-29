@@ -36,6 +36,12 @@ class UserProfile(models.Model):
     preferred_cinema = models.ForeignKey('movies.Cinema', on_delete=models.SET_NULL, null=True, blank=True)
     receive_promotions = models.BooleanField(default=True)
     
+    # Additional profile fields for user profile page
+    address = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    country = models.CharField(max_length=100, blank=True)
+    bio = models.TextField(blank=True)
+    
     def __str__(self):
         return self.user.username
 

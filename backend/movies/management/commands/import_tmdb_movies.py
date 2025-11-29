@@ -19,7 +19,7 @@ class Command(BaseCommand):
         parser.add_argument(
             '--pages',
             type=int,
-            default=2,
+            default=1,
             help='Number of pages to import'
         )
     
