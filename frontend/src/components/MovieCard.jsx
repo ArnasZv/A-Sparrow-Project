@@ -7,15 +7,8 @@ const MovieCard = ({ movie }) => {
             <Link to={`/movie/${movie.id}`}>
                 <div className="movie-poster">
                     <img 
-                        src={movie.poster_image?.startsWith('http') 
-                            ? movie.poster_image 
-                            : `${process.env.REACT_APP_API_URL}${movie.poster_image}`
-                        } 
-                        alt={movie.title} 
-                        onError={(e) => {
-                            e.target.src = '/placeholder-poster.jpg';
-                            e.target.onerror = null; // Prevent infinite loop
-                        }}
+                        src={movie.poster_image} 
+                        alt={movie.title}
                     />
                     {movie.is_3d && <span className="badge-3d">3D</span>}
                     {movie.is_imax && <span className="badge-imax">MAXX</span>}
