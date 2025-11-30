@@ -96,9 +96,13 @@ export const authAPI = {
     resetPassword: (uid, token, password) => api.post('/users/reset-password/', { 
         uid, 
         token, 
-        password 
+        new_password: password  // Changed from 'password' to 'new_password'
     }),
     verifyResetToken: (uid, token) => api.get(`/users/reset-password/${uid}/${token}/`),
+};
+
+export const contactAPI = {
+    submit: (data) => api.post('/users/contact/', data),
 };
 
 export default api;
