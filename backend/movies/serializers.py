@@ -1,6 +1,13 @@
 from rest_framework import serializers
 from .models import Cinema, Movie, Screen, Seat, Showtime
 
+
+class CinemaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cinema
+        fields = '__all__'
+
+
 class MovieSerializer(serializers.ModelSerializer):
     poster_image = serializers.SerializerMethodField()
     banner_image = serializers.SerializerMethodField()
@@ -13,7 +20,7 @@ class MovieSerializer(serializers.ModelSerializer):
         if not obj.poster_image:
             return None
         
-       
+      
         poster_path = obj.poster_image.name if hasattr(obj.poster_image, 'name') else str(obj.poster_image)
         
        
@@ -30,19 +37,20 @@ class MovieSerializer(serializers.ModelSerializer):
         if not obj.banner_image:
             return None
         
-        
+       
         banner_path = obj.banner_image.name if hasattr(obj.banner_image, 'name') else str(obj.banner_image)
         
-      
+       
         if banner_path.startswith('http://') or banner_path.startswith('https://'):
             return banner_path
         
-       
+
         request = self.context.get('request')
         if request:
             return request.build_absolute_uri(obj.banner_image.url)
         return None
-        
+
+
 class ScreenSerializer(serializers.ModelSerializer):
     cinema = CinemaSerializer(read_only=True)
     
