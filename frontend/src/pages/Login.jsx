@@ -73,7 +73,7 @@ const handleForgot = async (e) => {
                         <div className="form-group">
                             <label htmlFor="username">
                                 <span className="label-icon">👤</span>
-                                Username or Email
+                                Username
                             </label>
                             <input 
                                 type="text" 
@@ -82,7 +82,7 @@ const handleForgot = async (e) => {
                                 onChange={(e) => setUsername(e.target.value)}
                                 required 
                                 autoFocus
-                                placeholder="Enter your username or email"
+                                placeholder="Enter your username"
                             />
                         </div>
                         
