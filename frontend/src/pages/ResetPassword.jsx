@@ -173,7 +173,7 @@ const ResetPassword = () => {
 
                             <button 
                                 type="submit" 
-                                className="link-button"
+                                className="auth-link-btn"
                                 disabled={loading}
                             >
                                 {loading ? (
@@ -187,7 +187,7 @@ const ResetPassword = () => {
                             </button>
 
                             <div className="auth-footer">
-                                <Link to="/login" className="auth-link">
+                                <Link to="/login" className="link-button">
                                     Back to Login
                                 </Link>
                             </div>
