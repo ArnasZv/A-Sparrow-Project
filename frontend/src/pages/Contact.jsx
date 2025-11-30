@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { contactAPI } from '../services/api';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -39,30 +40,18 @@ const Contact = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:8000/api/users/contact/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                setSubmitted(true);
-                setFormData({ name: '', email: '', subject: '', message: '' });
-                
-                // Reset success message after 5 seconds
-                setTimeout(() => {
-                    setSubmitted(false);
-                }, 5000);
-            } else {
-                setError(data.error || 'Failed to send message. Please try again.');
-            }
+            await contactAPI.submit(formData);
+            
+            setSubmitted(true);
+            setFormData({ name: '', email: '', subject: '', message: '' });
+            
+            // Reset success message after 5 seconds
+            setTimeout(() => {
+                setSubmitted(false);
+            }, 5000);
         } catch (err) {
             console.error('Contact form error:', err);
-            setError('Network error. Please check your connection and try again.');
+            setError(err.response?.data?.error || 'Network error. Please check your connection and try again.');
         } finally {
             setLoading(false);
         }
