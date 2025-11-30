@@ -173,7 +173,7 @@ const ResetPassword = () => {
 
                             <button 
                                 type="submit" 
-                                className="auth-submit-btn"
+                                className="link-button"
                                 disabled={loading}
                             >
                                 {loading ? (
