@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { moviesAPI, cinemasAPI } from '../services/api';
 import MovieCard from '../components/MovieCard';
 
+
 const Home = () => {
+    const navigate = useNavigate();
     const [nowShowing, setNowShowing] = useState([]);
     const [cinemas, setCinemas] = useState([]);
     const [selectedCinema, setSelectedCinema] = useState('');
