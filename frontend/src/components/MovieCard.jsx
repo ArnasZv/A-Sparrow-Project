@@ -9,6 +9,7 @@ const MovieCard = ({ movie }) => {
                     <img 
                         src={movie.poster_image} 
                         alt={movie.title}
+                        crossOrigin="anonymous"
                     />
                     {movie.is_3d && <span className="badge-3d">3D</span>}
                     {movie.is_imax && <span className="badge-imax">MAXX</span>}
@@ -23,10 +24,7 @@ const MovieCard = ({ movie }) => {
                 <p className="genre">{movie.genre}</p>
             </div>
             <Link to={`/movie/${movie.id}`}>
-                <button 
-                    className="btn-book"
-                    onClick={() => window.location.href = `/movie/${movie.id}`}
-                >
+                <button className="btn-book">
                     Book Now
                 </button>
             </Link>
