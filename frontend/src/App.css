@@ -1385,6 +1385,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(20, 20, 20, 0.95));
+
 }
 
 .auth-card {
