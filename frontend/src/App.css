@@ -1381,6 +1381,32 @@ body {
     overflow: hidden;
 }
 
+.auth-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.auth-card {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.auth-submit-btn {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.success-message-box {
+    text-align: center;
+}
+
 .auth-page::before {
     content: '';
     position: absolute;
