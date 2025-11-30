@@ -25,26 +25,32 @@ const MovieDetails = () => {
     }, [selectedDate, selectedCinema, movie]);
     
     const loadMovieDetails = async () => {
-        try {
-            const response = await moviesAPI.getById(id);
-            setMovie(response.data);
-            setLoading(false);
-        } catch (error) {
-            console.error('Error loading movie:', error);
-            setLoading(false);
-        }
-    };
-    
-    const loadCinemas = async () => {
-        try {
-            const response = await cinemasAPI.getAll();
-            // Ensure cinemas is always an array
-            setCinemas(Array.isArray(response.data) ? response.data : []);
-        } catch (error) {
-            console.error('Error loading cinemas:', error);
-            setCinemas([]);
-        }
-    };
+    try {
+        const response = await moviesAPI.getById(id);
+        setMovie(response.data);
+        setLoading(false);
+    } catch (error) {
+        console.error('Error loading movie:', error);
+        setLoading(false);
+    }
+};
+
+const loadCinemas = async () => {
+    try {
+        const response = await cinemasAPI.getAll();
+        console.log('📍 Cinemas response:', response.data);
+        
+        // Handle paginated response
+        const cinemasData = response.data.results || response.data;
+        const cinemasArray = Array.isArray(cinemasData) ? cinemasData : [];
+        
+        console.log('📍 Parsed cinemas:', cinemasArray);
+        setCinemas(cinemasArray);
+    } catch (error) {
+        console.error('Error loading cinemas:', error);
+        setCinemas([]);
+    }
+};
     
     const loadShowtimes = async () => {
         try {
