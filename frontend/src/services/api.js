@@ -92,6 +92,13 @@ export const authAPI = {
     register: (userData) => api.post('/users/register/', userData),
     getProfile: () => api.get('/users/profile/'),
     updateProfile: (data) => api.put('/users/profile/', data),
+    forgotPassword: (email) => api.post('/users/forgot-password/', { email }),
+    resetPassword: (uid, token, password) => api.post('/users/reset-password/', { 
+        uid, 
+        token, 
+        password 
+    }),
+    verifyResetToken: (uid, token) => api.get(`/users/reset-password/${uid}/${token}/`),
 };
 
 export default api;

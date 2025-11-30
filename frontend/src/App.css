@@ -1375,6 +1375,7 @@ body {
         url('/public/popcorn.jpg') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 60px 0;
     position: relative;
     overflow: hidden;
