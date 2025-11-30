@@ -95,8 +95,8 @@ OmniWatch Cinema is a comprehensive full-stack web application that simulates a 
 - **TMDB API:** Movie data, posters, and information
 - **Stripe API:** Payment processing and subscription management
 - **Gmail SMTP:** Transactional emails
-- **Render:** Production deployment (Backend)
-- **Vercel:** Production deployment (Frontend - recommended)
+- **Render:** Production deployment (Backend & Frontend)
+
 
 ### Additional Tools
 
