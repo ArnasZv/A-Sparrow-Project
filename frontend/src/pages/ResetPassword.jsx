@@ -45,35 +45,29 @@ const ResetPassword = () => {
 
         setLoading(true);
 
-        try {
-            await authAPI.resetPassword(uid, token, formData.new_password); {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    uid,
-                    token,
-                    new_password: formData.new_password,
-                }),
-            });
+        const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
 
-            const data = await response.json();
+    if (!validatePassword()) {
+        return;
+    }
 
-            if (response.ok) {
-                setSuccess(true);
-                setTimeout(() => {
-                    navigate('/login');
-                }, 3000);
-            } else {
-                setError(data.message || 'Failed to reset password. The link may have expired.');
-            }
-        } catch (err) {
-            setError('An error occurred. Please try again later.');
-        } finally {
-            setLoading(false);
-        }
-    };
+    setLoading(true);
+
+    try {
+        await authAPI.resetPassword(uid, token, formData.new_password);
+        
+        setSuccess(true);
+        setTimeout(() => {
+            navigate('/login');
+        }, 3000);
+    } catch (err) {
+        setError(err.response?.data?.error || 'Failed to reset password. The link may have expired.');
+    } finally {
+        setLoading(false);
+    }
+};
 
     const getPasswordStrength = () => {
         const password = formData.new_password;
