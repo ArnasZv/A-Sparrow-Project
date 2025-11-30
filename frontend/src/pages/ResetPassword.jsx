@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { authAPI } from '../services/api';
 
 const ResetPassword = () => {
     const { uid, token } = useParams();
@@ -45,7 +46,7 @@ const ResetPassword = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8000/api/users/password-reset-confirm/', {
+            await authAPI.resetPassword(uid, token, formData.new_password); {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
