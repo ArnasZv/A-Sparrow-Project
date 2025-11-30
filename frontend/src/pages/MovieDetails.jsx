@@ -74,12 +74,12 @@ const MovieDetails = () => {
             <section 
                 className="movie-banner" 
                 style={{
-                    backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url(${movie.banner_url || movie.poster_url})`
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url(${movie.banner_image || movie.poster_image})`
                 }}
             >
                 <div className="container">
                     <div className="movie-header">
-                        <img src={movie.poster_url} alt={movie.title} className="detail-poster" />
+                        <img src={movie.poster_image} alt={movie.title} className="detail-poster" />
                         <div className="movie-info-detail">
                             <h1>{movie.title}</h1>
                             <div className="movie-meta-detail">
