@@ -109,7 +109,7 @@ const Home = () => {
                             <li>✓ Priority booking</li>
                             <li>✓ No booking fees</li>
                         </ul>
-                        <button className="btn-primary">Learn More</button>
+                        <button className="btn-primary" onClick={() => navigate ('/omnipass')}>Learn More</button>
                     </div>
                 </div>
             </section>
