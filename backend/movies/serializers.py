@@ -2,37 +2,47 @@ from rest_framework import serializers
 from .models import Cinema, Movie, Screen, Seat, Showtime
 
 class MovieSerializer(serializers.ModelSerializer):
-    poster_url = serializers.SerializerMethodField()
-    banner_url = serializers.SerializerMethodField()
+    poster_image = serializers.SerializerMethodField()
+    banner_image = serializers.SerializerMethodField()
     
     class Meta:
         model = Movie
         fields = '__all__'
     
-    def get_poster_url(self, obj):
-        if obj.poster_image:
-            # Check if it's already a full URL (TMDB)
-            poster_str = str(obj.poster_image)
-            if poster_str.startswith('http://') or poster_str.startswith('https://'):
-                return poster_str
-            # Otherwise, build the full URL for local images
-            request = self.context.get('request')
-            if request:
-                return request.build_absolute_uri(obj.poster_image.url)
+    def get_poster_image(self, obj):
+        if not obj.poster_image:
+            return None
+        
+       
+        poster_path = obj.poster_image.name if hasattr(obj.poster_image, 'name') else str(obj.poster_image)
+        
+       
+        if poster_path.startswith('http://') or poster_path.startswith('https://'):
+            return poster_path
+        
+       
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.poster_image.url)
         return None
     
-    def get_banner_url(self, obj):
-        if obj.banner_image:
-            # Check if it's already a full URL (TMDB)
-            banner_str = str(obj.banner_image)
-            if banner_str.startswith('http://') or banner_str.startswith('https://'):
-                return banner_str
-            # Otherwise, build the full URL for local images
-            request = self.context.get('request')
-            if request:
-                return request.build_absolute_uri(obj.banner_image.url)
+    def get_banner_image(self, obj):
+        if not obj.banner_image:
+            return None
+        
+        
+        banner_path = obj.banner_image.name if hasattr(obj.banner_image, 'name') else str(obj.banner_image)
+        
+      
+        if banner_path.startswith('http://') or banner_path.startswith('https://'):
+            return banner_path
+        
+       
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.banner_image.url)
         return None
-
+        
 class ScreenSerializer(serializers.ModelSerializer):
     cinema = CinemaSerializer(read_only=True)
     
