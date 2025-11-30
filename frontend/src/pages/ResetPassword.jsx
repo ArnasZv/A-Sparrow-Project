@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { authAPI } from '../services/api';
 
 const ResetPassword = () => {
     const { uid, token } = useParams();
@@ -45,30 +46,14 @@ const ResetPassword = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8000/api/users/password-reset-confirm/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    uid,
-                    token,
-                    new_password: formData.new_password,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                setSuccess(true);
-                setTimeout(() => {
-                    navigate('/login');
-                }, 3000);
-            } else {
-                setError(data.message || 'Failed to reset password. The link may have expired.');
-            }
+            await authAPI.resetPassword(uid, token, formData.new_password);
+            
+            setSuccess(true);
+            setTimeout(() => {
+                navigate('/login');
+            }, 3000);
         } catch (err) {
-            setError('An error occurred. Please try again later.');
+            setError(err.response?.data?.error || 'Failed to reset password. The link may have expired.');
         } finally {
             setLoading(false);
         }

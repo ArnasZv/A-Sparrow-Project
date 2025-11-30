@@ -10,6 +10,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import send_mail
 from django.conf import settings
+import os
 from .serializers import UserSerializer, RegisterSerializer, UserProfileDetailSerializer
 
 class RegisterView(generics.CreateAPIView):
@@ -21,6 +22,9 @@ class RegisterView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
+        
+        # Get frontend URL from environment variable
+        frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
         
         # Send welcome email
         try:
@@ -37,7 +41,7 @@ You can now:
 ✓ Access your personal dashboard
 ✓ Manage your bookings
 
-Start exploring: http://localhost:3000
+Start exploring: {frontend_url}
 
 Enjoy the show!
 
@@ -159,8 +163,11 @@ def forgot_password(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         
+        # Get frontend URL from environment variable
+        frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
+        
         # Create reset link
-        reset_link = f"http://localhost:3000/reset-password/{uid}/{token}"
+        reset_link = f"{frontend_url}/reset-password/{uid}/{token}"
         
         # Send email
         send_mail(
@@ -213,6 +220,9 @@ def forgot_username(request):
     try:
         user = User.objects.get(email=email)
         
+        # Get frontend URL from environment variable
+        frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
+        
         # Send email
         send_mail(
             subject='Your OmniWatch Username 👤',
@@ -221,7 +231,7 @@ Hello {user.first_name or 'there'},
 
 Your OmniWatch Cinema username is: {user.username}
 
-You can use this username to log in at: http://localhost:3000/login
+You can use this username to log in at: {frontend_url}/login
 
 Best regards,
 The OmniWatch Team

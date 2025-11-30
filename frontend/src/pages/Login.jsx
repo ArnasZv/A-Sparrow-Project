@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { authAPI } from '../services/api';
+import api from '../services/api'; // for forgot username
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -34,26 +36,26 @@ const Login = () => {
         }
     };
     
-    const handleForgot = async (e) => {
-        e.preventDefault();
-        setError('');
-        setForgotSuccess('');
-        
-        try {
-            const endpoint = forgotType === 'password' 
-                ? 'forgot-password' 
-                : 'forgot-username';
-            
-            await axios.post(`http://127.0.0.1:8000/api/users/${endpoint}/`, {
-                email: forgotEmail
-            });
-            
-            setForgotSuccess(`Check your email! We've sent you ${forgotType === 'password' ? 'a reset link' : 'your username'}.`);
-            setForgotEmail('');
-        } catch (err) {
-            setError('Failed to send email. Please try again.');
+
+const handleForgot = async (e) => {
+    e.preventDefault();
+    setError('');
+    setForgotSuccess('');
+    
+    try {
+        if (forgotType === 'password') {
+            await authAPI.forgotPassword(forgotEmail);
+            setForgotSuccess('Password reset link sent to your email!');
+        } else {
+            await api.post('/users/forgot-username/', { email: forgotEmail });
+            setForgotSuccess('Username sent to your email!');
         }
-    };
+        
+        setForgotEmail('');
+    } catch (error) {
+        setError(error.response?.data?.message || 'Failed to send email. Please try again.');
+    }
+};
     
     return (
         <section className="auth-page">
