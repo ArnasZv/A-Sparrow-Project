@@ -1,114 +1,104 @@
 [
 {
-  "model": "contenttypes.contenttype",
+  "model": "auth.user",
   "fields": {
-    "app_label": "admin",
-    "model": "logentry"
+    "password": "pbkdf2_sha256$600000$J4UgBME4okFqb0zrFIHA1N$YiklAzhGUK9C8qBqKYZKcDx75sAbAc9R/4QK36+9CQ0=",
+    "last_login": "2025-11-29T00:57:24.172Z",
+    "is_superuser": true,
+    "username": "ArnasZv",
+    "first_name": "",
+    "last_name": "",
+    "email": "arnasjsparrow@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-27T03:12:30.394Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
-  "model": "contenttypes.contenttype",
+  "model": "auth.user",
   "fields": {
-    "app_label": "auth",
-    "model": "permission"
+    "password": "pbkdf2_sha256$600000$8Bn13s1N3Ntp303gkWT39K$XBZR4Xq8ZmHGJONyLRwdAnHVe8lwZ7jF8p/Kq/SKZtM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Arnas",
+    "first_name": "Arnas",
+    "last_name": "Zvirblis",
+    "email": "arnasjsparrow@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-27T03:16:41.292Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
-  "model": "contenttypes.contenttype",
+  "model": "auth.user",
   "fields": {
-    "app_label": "auth",
-    "model": "group"
+    "password": "pbkdf2_sha256$600000$aPxwovzqapkWPcdCsUPA0P$7uKW+Gg99jcGFUmwFjRUpaXTeVGAQVxeEtR3d3erpko=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "adadqeqe",
+    "first_name": "Arnas",
+    "last_name": "Zvirblis",
+    "email": "azrn410@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-29T00:36:08.889Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
-  "model": "contenttypes.contenttype",
+  "model": "auth.user",
   "fields": {
-    "app_label": "auth",
-    "model": "user"
+    "password": "pbkdf2_sha256$600000$rqnlpSHHfOm54cKVcvOkeA$jhN5rg3cQSO9ukNHiLAHcNJwjkfmUBtM98cGxebDfao=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "tgbyrne",
+    "first_name": "taylor",
+    "last_name": "byrne",
+    "email": "taylorgbyrne@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-29T22:13:07.651Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
-  "model": "contenttypes.contenttype",
+  "model": "auth.user",
   "fields": {
-    "app_label": "contenttypes",
-    "model": "contenttype"
+    "password": "pbkdf2_sha256$600000$i5jEW9ANbrzNVteXNyasCu$+oAUHmtibcH/qPFgdAB5gSfhO7TaWnDu3V8XYrYCccM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "asdasdas",
+    "first_name": "asdas",
+    "last_name": "asdasasdasd",
+    "email": "arnasjsparrow@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-29T22:21:51.253Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
-  "model": "contenttypes.contenttype",
+  "model": "auth.user",
   "fields": {
-    "app_label": "sessions",
-    "model": "session"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "movies",
-    "model": "cinema"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "movies",
-    "model": "movie"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "movies",
-    "model": "screen"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "movies",
-    "model": "showtime"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "movies",
-    "model": "seat"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "bookings",
-    "model": "booking"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "bookings",
-    "model": "payment"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "bookings",
-    "model": "bookedseat"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "users",
-    "model": "userprofile"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "users",
-    "model": "myomnipass"
+    "password": "pbkdf2_sha256$600000$X2tnTpMYVbA9FAxP3cR1Dt$X+p0xJXzy8q4sfFf38apxLlEErHNTNC+lwJ1giHNy0k=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "asdawdads",
+    "first_name": "asdasd",
+    "last_name": "awdadsad",
+    "email": "azrn410@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-29T22:22:24.062Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
@@ -87573,6 +87563,214 @@
   }
 },
 {
+  "model": "bookings.booking",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4567,
+    "booking_reference": "92LQC4KOO2K2",
+    "total_amount": "22.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-28T23:24:56.227Z",
+    "updated_at": "2025-11-28T23:24:56.230Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4610,
+    "booking_reference": "Z14583PHJVXL",
+    "total_amount": "49.75",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-28T23:37:42.900Z",
+    "updated_at": "2025-11-28T23:37:42.903Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4730,
+    "booking_reference": "52JSPTZQ2A4N",
+    "total_amount": "25.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T00:05:40.834Z",
+    "updated_at": "2025-11-29T00:05:40.836Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4808,
+    "booking_reference": "8TF4CCYHU146",
+    "total_amount": "25.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T00:08:23.684Z",
+    "updated_at": "2025-11-29T00:08:23.686Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4808,
+    "booking_reference": "86792T4DJUYG",
+    "total_amount": "37.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T00:20:35.533Z",
+    "updated_at": "2025-11-29T00:20:35.536Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4808,
+    "booking_reference": "3CT3E8U6QYUW",
+    "total_amount": "25.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T00:24:37.429Z",
+    "updated_at": "2025-11-29T00:24:37.430Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4808,
+    "booking_reference": "8C4YPKVNDSN4",
+    "total_amount": "13.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T00:24:58.623Z",
+    "updated_at": "2025-11-29T00:24:58.625Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4765,
+    "booking_reference": "NPZ780O8XAML",
+    "total_amount": "61.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T00:29:04.024Z",
+    "updated_at": "2025-11-29T00:29:04.026Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4822,
+    "booking_reference": "F0BY5AZNGDMK",
+    "total_amount": "205.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T00:30:43.068Z",
+    "updated_at": "2025-11-29T00:30:43.137Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4761,
+    "booking_reference": "26AF4VXIVVW8",
+    "total_amount": "31.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T01:36:10.605Z",
+    "updated_at": "2025-11-29T01:36:10.607Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 4825,
+    "booking_reference": "HUGL914818NR",
+    "total_amount": "61.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T17:27:23.465Z",
+    "updated_at": "2025-11-29T17:27:23.470Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 5566,
+    "booking_reference": "X3KIU100RST9",
+    "total_amount": "53.00",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T22:05:01.538Z",
+    "updated_at": "2025-11-29T22:05:01.541Z"
+  }
+},
+{
+  "model": "bookings.booking",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "Arnas"
+    ],
+    "showtime": 6483,
+    "booking_reference": "2G71I951G3FJ",
+    "total_amount": "293.50",
+    "booking_fee": "1.00",
+    "status": "PENDING",
+    "created_at": "2025-11-29T22:11:43.753Z",
+    "updated_at": "2025-11-29T22:11:43.824Z"
+  }
+},
+{
   "model": "bookings.bookedseat",
   "pk": 1,
   "fields": {
@@ -88137,1020 +88335,6 @@
     "booking": 13,
     "seat": 13326,
     "price": "22.50"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "add_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "change_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "delete_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "view_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "add_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "change_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "delete_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "view_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "add_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "change_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "delete_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "view_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "add_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "change_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "delete_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "view_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "add_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "change_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "delete_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "view_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "add_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "change_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "delete_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "view_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add cinema",
-    "content_type": [
-      "movies",
-      "cinema"
-    ],
-    "codename": "add_cinema"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change cinema",
-    "content_type": [
-      "movies",
-      "cinema"
-    ],
-    "codename": "change_cinema"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete cinema",
-    "content_type": [
-      "movies",
-      "cinema"
-    ],
-    "codename": "delete_cinema"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view cinema",
-    "content_type": [
-      "movies",
-      "cinema"
-    ],
-    "codename": "view_cinema"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add movie",
-    "content_type": [
-      "movies",
-      "movie"
-    ],
-    "codename": "add_movie"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change movie",
-    "content_type": [
-      "movies",
-      "movie"
-    ],
-    "codename": "change_movie"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete movie",
-    "content_type": [
-      "movies",
-      "movie"
-    ],
-    "codename": "delete_movie"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view movie",
-    "content_type": [
-      "movies",
-      "movie"
-    ],
-    "codename": "view_movie"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add screen",
-    "content_type": [
-      "movies",
-      "screen"
-    ],
-    "codename": "add_screen"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change screen",
-    "content_type": [
-      "movies",
-      "screen"
-    ],
-    "codename": "change_screen"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete screen",
-    "content_type": [
-      "movies",
-      "screen"
-    ],
-    "codename": "delete_screen"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view screen",
-    "content_type": [
-      "movies",
-      "screen"
-    ],
-    "codename": "view_screen"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add showtime",
-    "content_type": [
-      "movies",
-      "showtime"
-    ],
-    "codename": "add_showtime"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change showtime",
-    "content_type": [
-      "movies",
-      "showtime"
-    ],
-    "codename": "change_showtime"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete showtime",
-    "content_type": [
-      "movies",
-      "showtime"
-    ],
-    "codename": "delete_showtime"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view showtime",
-    "content_type": [
-      "movies",
-      "showtime"
-    ],
-    "codename": "view_showtime"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add seat",
-    "content_type": [
-      "movies",
-      "seat"
-    ],
-    "codename": "add_seat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change seat",
-    "content_type": [
-      "movies",
-      "seat"
-    ],
-    "codename": "change_seat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete seat",
-    "content_type": [
-      "movies",
-      "seat"
-    ],
-    "codename": "delete_seat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view seat",
-    "content_type": [
-      "movies",
-      "seat"
-    ],
-    "codename": "view_seat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add booking",
-    "content_type": [
-      "bookings",
-      "booking"
-    ],
-    "codename": "add_booking"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change booking",
-    "content_type": [
-      "bookings",
-      "booking"
-    ],
-    "codename": "change_booking"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete booking",
-    "content_type": [
-      "bookings",
-      "booking"
-    ],
-    "codename": "delete_booking"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view booking",
-    "content_type": [
-      "bookings",
-      "booking"
-    ],
-    "codename": "view_booking"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add payment",
-    "content_type": [
-      "bookings",
-      "payment"
-    ],
-    "codename": "add_payment"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change payment",
-    "content_type": [
-      "bookings",
-      "payment"
-    ],
-    "codename": "change_payment"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete payment",
-    "content_type": [
-      "bookings",
-      "payment"
-    ],
-    "codename": "delete_payment"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view payment",
-    "content_type": [
-      "bookings",
-      "payment"
-    ],
-    "codename": "view_payment"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add booked seat",
-    "content_type": [
-      "bookings",
-      "bookedseat"
-    ],
-    "codename": "add_bookedseat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change booked seat",
-    "content_type": [
-      "bookings",
-      "bookedseat"
-    ],
-    "codename": "change_bookedseat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete booked seat",
-    "content_type": [
-      "bookings",
-      "bookedseat"
-    ],
-    "codename": "delete_bookedseat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view booked seat",
-    "content_type": [
-      "bookings",
-      "bookedseat"
-    ],
-    "codename": "view_bookedseat"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add user profile",
-    "content_type": [
-      "users",
-      "userprofile"
-    ],
-    "codename": "add_userprofile"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change user profile",
-    "content_type": [
-      "users",
-      "userprofile"
-    ],
-    "codename": "change_userprofile"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete user profile",
-    "content_type": [
-      "users",
-      "userprofile"
-    ],
-    "codename": "delete_userprofile"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view user profile",
-    "content_type": [
-      "users",
-      "userprofile"
-    ],
-    "codename": "view_userprofile"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add my omni pass",
-    "content_type": [
-      "users",
-      "myomnipass"
-    ],
-    "codename": "add_myomnipass"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change my omni pass",
-    "content_type": [
-      "users",
-      "myomnipass"
-    ],
-    "codename": "change_myomnipass"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete my omni pass",
-    "content_type": [
-      "users",
-      "myomnipass"
-    ],
-    "codename": "delete_myomnipass"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view my omni pass",
-    "content_type": [
-      "users",
-      "myomnipass"
-    ],
-    "codename": "view_myomnipass"
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$600000$J4UgBME4okFqb0zrFIHA1N$YiklAzhGUK9C8qBqKYZKcDx75sAbAc9R/4QK36+9CQ0=",
-    "last_login": "2025-11-29T00:57:24.172Z",
-    "is_superuser": true,
-    "username": "ArnasZv",
-    "first_name": "",
-    "last_name": "",
-    "email": "arnasjsparrow@gmail.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2025-11-27T03:12:30.394Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$600000$8Bn13s1N3Ntp303gkWT39K$XBZR4Xq8ZmHGJONyLRwdAnHVe8lwZ7jF8p/Kq/SKZtM=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "Arnas",
-    "first_name": "Arnas",
-    "last_name": "Zvirblis",
-    "email": "arnasjsparrow@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-11-27T03:16:41.292Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$600000$aPxwovzqapkWPcdCsUPA0P$7uKW+Gg99jcGFUmwFjRUpaXTeVGAQVxeEtR3d3erpko=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "adadqeqe",
-    "first_name": "Arnas",
-    "last_name": "Zvirblis",
-    "email": "azrn410@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-11-29T00:36:08.889Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$600000$rqnlpSHHfOm54cKVcvOkeA$jhN5rg3cQSO9ukNHiLAHcNJwjkfmUBtM98cGxebDfao=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "tgbyrne",
-    "first_name": "taylor",
-    "last_name": "byrne",
-    "email": "taylorgbyrne@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-11-29T22:13:07.651Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$600000$i5jEW9ANbrzNVteXNyasCu$+oAUHmtibcH/qPFgdAB5gSfhO7TaWnDu3V8XYrYCccM=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "asdasdas",
-    "first_name": "asdas",
-    "last_name": "asdasasdasd",
-    "email": "arnasjsparrow@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-11-29T22:21:51.253Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$600000$X2tnTpMYVbA9FAxP3cR1Dt$X+p0xJXzy8q4sfFf38apxLlEErHNTNC+lwJ1giHNy0k=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "asdawdads",
-    "first_name": "asdasd",
-    "last_name": "awdadsad",
-    "email": "azrn410@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-11-29T22:22:24.062Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 1,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4567,
-    "booking_reference": "92LQC4KOO2K2",
-    "total_amount": "22.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-28T23:24:56.227Z",
-    "updated_at": "2025-11-28T23:24:56.230Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 2,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4610,
-    "booking_reference": "Z14583PHJVXL",
-    "total_amount": "49.75",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-28T23:37:42.900Z",
-    "updated_at": "2025-11-28T23:37:42.903Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 3,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4730,
-    "booking_reference": "52JSPTZQ2A4N",
-    "total_amount": "25.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T00:05:40.834Z",
-    "updated_at": "2025-11-29T00:05:40.836Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 4,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4808,
-    "booking_reference": "8TF4CCYHU146",
-    "total_amount": "25.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T00:08:23.684Z",
-    "updated_at": "2025-11-29T00:08:23.686Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 5,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4808,
-    "booking_reference": "86792T4DJUYG",
-    "total_amount": "37.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T00:20:35.533Z",
-    "updated_at": "2025-11-29T00:20:35.536Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 6,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4808,
-    "booking_reference": "3CT3E8U6QYUW",
-    "total_amount": "25.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T00:24:37.429Z",
-    "updated_at": "2025-11-29T00:24:37.430Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 7,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4808,
-    "booking_reference": "8C4YPKVNDSN4",
-    "total_amount": "13.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T00:24:58.623Z",
-    "updated_at": "2025-11-29T00:24:58.625Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 8,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4765,
-    "booking_reference": "NPZ780O8XAML",
-    "total_amount": "61.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T00:29:04.024Z",
-    "updated_at": "2025-11-29T00:29:04.026Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 9,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4822,
-    "booking_reference": "F0BY5AZNGDMK",
-    "total_amount": "205.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T00:30:43.068Z",
-    "updated_at": "2025-11-29T00:30:43.137Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 10,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4761,
-    "booking_reference": "26AF4VXIVVW8",
-    "total_amount": "31.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T01:36:10.605Z",
-    "updated_at": "2025-11-29T01:36:10.607Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 11,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 4825,
-    "booking_reference": "HUGL914818NR",
-    "total_amount": "61.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T17:27:23.465Z",
-    "updated_at": "2025-11-29T17:27:23.470Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 12,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 5566,
-    "booking_reference": "X3KIU100RST9",
-    "total_amount": "53.00",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T22:05:01.538Z",
-    "updated_at": "2025-11-29T22:05:01.541Z"
-  }
-},
-{
-  "model": "bookings.booking",
-  "pk": 13,
-  "fields": {
-    "user": [
-      "Arnas"
-    ],
-    "showtime": 6483,
-    "booking_reference": "2G71I951G3FJ",
-    "total_amount": "293.50",
-    "booking_fee": "1.00",
-    "status": "PENDING",
-    "created_at": "2025-11-29T22:11:43.753Z",
-    "updated_at": "2025-11-29T22:11:43.824Z"
   }
 },
 {
