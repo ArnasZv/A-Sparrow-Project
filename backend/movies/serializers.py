@@ -1,11 +1,6 @@
 from rest_framework import serializers
 from .models import Cinema, Movie, Screen, Seat, Showtime
 
-class CinemaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cinema
-        fields = '__all__'
-
 class MovieSerializer(serializers.ModelSerializer):
     poster_url = serializers.SerializerMethodField()
     banner_url = serializers.SerializerMethodField()
@@ -16,6 +11,11 @@ class MovieSerializer(serializers.ModelSerializer):
     
     def get_poster_url(self, obj):
         if obj.poster_image:
+            # Check if it's already a full URL (TMDB)
+            poster_str = str(obj.poster_image)
+            if poster_str.startswith('http://') or poster_str.startswith('https://'):
+                return poster_str
+            # Otherwise, build the full URL for local images
             request = self.context.get('request')
             if request:
                 return request.build_absolute_uri(obj.poster_image.url)
@@ -23,6 +23,11 @@ class MovieSerializer(serializers.ModelSerializer):
     
     def get_banner_url(self, obj):
         if obj.banner_image:
+            # Check if it's already a full URL (TMDB)
+            banner_str = str(obj.banner_image)
+            if banner_str.startswith('http://') or banner_str.startswith('https://'):
+                return banner_str
+            # Otherwise, build the full URL for local images
             request = self.context.get('request')
             if request:
                 return request.build_absolute_uri(obj.banner_image.url)
